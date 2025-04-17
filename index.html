@@ -97,7 +97,6 @@
         font-size: 1rem;
         transition: all 0.3s ease;
         border: 2px solid #64ffda;
-        cursor: pointer;
       }
 
       .back-button:hover {
@@ -153,50 +152,11 @@
         Seu e-mail foi enviado com sucesso. Iremos responder o mais breve
         possível. Apreciamos sua mensagem!
       </p>
-      <button onclick="goBackAndReset()" class="back-button">
-        Voltar à página anterior
-      </button>
+      <a
+        href="https://portifolio-felipe-git-main-felipe-menezes-projects-52703d5c.vercel.app/"
+        class="back-button"
+        >Voltar à página anterior</a
+      >
     </div>
-
-    <script>
-      function goBackAndReset() {
-        // Armazena um flag no sessionStorage para indicar que o formulário deve ser resetado
-        sessionStorage.setItem("shouldResetForm", "true");
-
-        // Volta para a página anterior
-        window.history.back();
-      }
-
-      // Adiciona um event listener para quando a página for carregada
-      window.addEventListener("pageshow", function (event) {
-        // Verifica se é uma navegação normal (não cache)
-        if (
-          event.persisted ||
-          (window.performance && window.performance.navigation.type === 2)
-        ) {
-          // Verifica se precisamos resetar o formulário
-          if (sessionStorage.getItem("shouldResetForm") === "true") {
-            resetForm();
-            sessionStorage.removeItem("shouldResetForm");
-          }
-        }
-      });
-
-      function resetForm() {
-        // Encontra todos os formulários na página e os reseta
-        const forms = document.getElementsByTagName("form");
-        for (let i = 0; i < forms.length; i++) {
-          forms[i].reset();
-        }
-
-        // Opcional: Limpar outros elementos que não sejam parte do formulário
-        const inputs = document.querySelectorAll("input, textarea, select");
-        inputs.forEach((input) => {
-          if (!input.closest("form")) {
-            input.value = "";
-          }
-        });
-      }
-    </script>
   </body>
 </html>
